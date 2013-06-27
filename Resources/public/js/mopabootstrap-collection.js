@@ -64,7 +64,7 @@
             var replace_pattern = new RegExp(prototype_name, 'g');
 
             var rowContent = $el.attr('data-prototype').replace(replace_pattern, index);
-            var row = $(rowContent);
+            var row = $("<div />").html(rowContent);
             $('div' + this.options.collection_id + '> .controls').append(row);
             $(this.options.collection_id).trigger('add.mopa-collection-item', [row]);
         },
@@ -72,7 +72,6 @@
                 if (this.$element.parents('.collection-item').length !== 0){
                     var row = this.$element.closest('.collection-item');
                     row.remove();
-                    $(this.options.collection_id).trigger('remove.mopa-collection-item', [row]);
                 }
         }
 
